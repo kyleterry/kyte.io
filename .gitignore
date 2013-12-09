@@ -1,0 +1,5 @@
+*.sw[op]
+site
+site.o
+site.hi
+_cache

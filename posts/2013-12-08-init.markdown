@@ -1,0 +1,8 @@
+---
+title: Initialize
+---
+
+I suppose this is my first post. We are booting up here.
+
+Here you will find some ramblings and thought. Mostly about nothing anyone cares
+about.
