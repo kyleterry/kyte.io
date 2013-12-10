@@ -19,6 +19,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "fonts/*" $ do
+        route idRoute
+        compile copyFileCompiler
+
     match (fromList ["favicon.ico", "humans.txt", "robots.txt"]) $ do
         route   idRoute
         compile copyFileCompiler
