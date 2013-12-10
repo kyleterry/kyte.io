@@ -5,20 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>kyte.io: Contact</title>
-
-    
     <meta name="description" content="Blabbering" />
-    
     <meta name="author" content="Kyle Terry" />
     <meta name="copyright" content="Kyle Terry Copyright (c) 2013" />
-
     <link rel="stylesheet" href="./css/foundation.min.css" />
+    <link rel="stylesheet" href="./css/base.css" />
     <script src="./js/modernizr.js"></script>
   </head>
   <body>
-    
-<!-- Nav and Banner -->
-  
+    <!-- Nav and Banner -->
+  <div id="blog-header">
     <nav class="top-bar">
         <ul class="title-area">
             <li class="name">
@@ -38,12 +34,7 @@
         </ul>
         </section>
     </nav>
-    <div class="row">
-        <div class="large-12 columns">
-            <!-- Main Banner Image - place in a paragraph to enforce the modular scale spacing -->
-            <p><img src="http://placehold.it/1000x400&amp;text=[banner img]" /></p>
-        </div>
-    </div>
+  </div>
   <!-- End Nav and Banner -->
   <!-- Main Content Section -->
   <div class="row">
@@ -53,7 +44,6 @@
     </div>
 </div>
 
-  </div>
   <!-- Footer -->
   <footer class="row">
     <div class="large-12 columns">
@@ -65,11 +55,17 @@
       </div>
     </div> 
   </footer>
-    <script src="./js/jquery.js"></script>
+  <!-- <script src="/js/jquery.js"></script> -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./js/jquery.parallax.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#blog-header').parallax('50%', 0.2);
+      });
+    </script>
     <script src="./js/foundation.min.js"></script>
     <script>
       $(document).foundation();
-
       var doc = document.documentElement;
       doc.setAttribute('data-useragent', navigator.userAgent);
     </script>

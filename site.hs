@@ -17,7 +17,7 @@ main = hakyll $ do
 
     match "js/*" $ do
         route   idRoute
-        compile compressCssCompiler
+        compile copyFileCompiler
 
     match (fromList ["favicon.ico", "humans.txt", "robots.txt"]) $ do
         route   idRoute
