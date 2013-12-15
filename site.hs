@@ -38,16 +38,14 @@ main = hakyll $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ do
-            compiled <- pandocCompiler >>= saveSnapshot "content"
-            post     <- loadAndApplyTemplate "templates/post.html" postCtx compiled
-            teaser   <- loadAndApplyTemplate
+        compile $ pandocCompiler
+            >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= loadAndApplyTemplate
                         "templates/post-item-teaser.html"
-                        (teaserField "teaser" "content")
-                        compiled
-            saveSnapshot "content" post
-            saveSnapshot "teaser" teaser
-            loadAndApplyTemplate "template/default.html" postCtx post >>= relativizeUrls
+                        (teaserField "teaser" "content" `mappend` defaultContext)
+            >>= loadAndApplyTemplate "template/default.html" postCtx
+            >>= relativizeUrls
 
     create ["archive.html"] $ do
         route idRoute
