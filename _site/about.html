@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="./css/foundation.min.css" />
     <link rel="stylesheet" href="./css/foundation-icons.css" />
     <link rel="stylesheet" href="./css/base.css" />
+    <style>
+        #blog-header {
+            height: 450px;
+            background: url("/images/9581606360_9a6c66b3b6_k.jpg") no-repeat fixed 50% 0 rgba(0, 0, 0, 0);
+        }
+    </style>
     <script src="./js/modernizr.js"></script>
   </head>
   <body>
@@ -31,6 +37,8 @@
             <li class="divider"></li>
             <li><a href="./about.html" class>About</a></li>
             <li class="divider"></li>
+            <li><a href="./contact.html" class>Contact</a></li>
+            <li class="divider"></li>
             <li><a href="./projects.html" class>Projects</a></li>
         </ul>
         </section>
@@ -38,6 +46,7 @@
   </div>
   <!-- End Nav and Banner -->
   <!-- Main Content Section -->
+  <div id="content">
   <div class="row">
     <div class="large-12 columns">
         <h4>About</h4>
@@ -45,16 +54,15 @@
     </div>
 </div>
 
+  </div>
   <!-- Footer -->
   <footer class="row">
     <div class="large-12 columns">
       <hr />
       <div class="row">
-        <div class="large-6 columns">
+        <div class="large-12 columns">
           <p>See you all in Hell.</p>
-        </div>
-        <div class="large-6 columns">
-          <p><a href="https://github.com/kyleterry"><i class="fi-social-github"></i></a></p>
+          <p>All content is licensed under a <a href="http://creativecommons.org/licenses/by-nc/2.5/">Creative Commons Attribution-NonCommercial 2.5 License</a>.</p>
         </div>
       </div>
     </div> 
@@ -62,16 +70,7 @@
   <!-- <script src="/js/jquery.js"></script> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./js/jquery.parallax.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('#blog-header').parallax('50%', 0.2);
-      });
-    </script>
     <script src="./js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      var doc = document.documentElement;
-      doc.setAttribute('data-useragent', navigator.userAgent);
-    </script>
+    <script src="./js/kyte.js"></script>
   </body>
 </html>

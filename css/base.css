@@ -1,8 +1,18 @@
-#blog-header {
-    height: 500px;
-    background: url("/images/9581606360_9a6c66b3b6_k.jpg") no-repeat fixed 50% 0 rgba(0, 0, 0, 0);
-}
-
 .see-through{
     opacity:0.9;
+}
+
+.sticky-post-header {
+    top: 0;
+    position: fixed;
+    background: #F4F4F4;
+    width: 100%;
+}
+
+.marginize-post-body {
+    margin-top: 60px;
+}
+
+body {
+    background: #F4F4F4;
 }

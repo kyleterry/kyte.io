@@ -2,6 +2,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Data.Maybe (fromMaybe)
+import           Control.Applicative
 
 
 --------------------------------------------------------------------------------
@@ -36,10 +38,16 @@ main = hakyll $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+        compile $ do
+            compiled <- pandocCompiler >>= saveSnapshot "content"
+            post     <- loadAndApplyTemplate "templates/post.html" postCtx compiled
+            teaser   <- loadAndApplyTemplate
+                        "templates/post-item-teaser.html"
+                        (teaserField "teaser" "content")
+                        compiled
+            saveSnapshot "content" post
+            saveSnapshot "teaser" teaser
+            loadAndApplyTemplate "template/default.html" postCtx post >>= relativizeUrls
 
     create ["archive.html"] $ do
         route idRoute
@@ -59,10 +67,10 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            teasers <- recentFirst =<< loadAllSnapshots "posts/*" "teaser"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
+                    listField "posts" postCtx (return teasers) `mappend`
+                    constField "title" "Home"                  `mappend`
                     defaultContext
 
             getResourceBody
@@ -74,6 +82,7 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
+
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`

@@ -1,5 +1,6 @@
 ---
 title: Initialize
+description: First!
 ---
 
 I suppose this is my first post. We are booting up here.
