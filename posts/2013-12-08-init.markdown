@@ -1,6 +1,7 @@
 ---
 title: Initialize
 description: First!
+date: 2013-12-08
 ---
 
 I suppose this is my first post. We are booting up here.
