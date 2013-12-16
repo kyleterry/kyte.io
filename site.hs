@@ -69,6 +69,20 @@ main = hakyll $ do
                 >>= applyAsTemplate indexContext
                 >>= loadAndApplyTemplate "templates/default.html" indexContext
 
+    create ["rss.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedContext = postCtx `mappend` bodyField "description"
+            posts <- latestPosts
+            renderRss feedConfiguration feedContext posts
+
+    create ["atom.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedContext = postCtx `mappend` bodyField "description"
+            posts <- latestPosts
+            renderAtom feedConfiguration feedContext posts
+
 --------------------------------------------------------------------------------
 
 latestPosts :: Compiler [Item String]
@@ -81,6 +95,15 @@ postCtx =
 
 postTeaserContext :: String -> Context String
 postTeaserContext snapshot = teaserField "teaser" snapshot `mappend` postCtx
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+  { feedTitle = "Kyte.io"
+  , feedDescription = "Useless ramblings; do not care."
+  , feedAuthorName = "Kyle Terry"
+  , feedAuthorEmail = "kyle[deletethis]@kyleterry.com"
+  , feedRoot = "http://kyte.io"
+  }
 
 pageCtx :: Context String
 pageCtx = 

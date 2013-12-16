@@ -13,6 +13,14 @@
     margin-top: 60px;
 }
 
+.post-item {
+    border-bottom: 1px solid #DDD;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
 body {
     background: #F4F4F4;
 }

@@ -1,16 +1,16 @@
 $for(posts)$
-<div class="row">
+<div class="row post-item">
     <div class="large-5 columns">
         <h2>$title$ <small>$date$</small></h2>
     </div>
     <div class="large-7 columns">
         $if(teaser)$
         <p>$teaser$</p>
-        <a href="$url$">Read more &raquo;</a>
+        <p><a href="$url$">Read more &raquo;</a></p>
         $else$
         <p>$body$</p>
+        <p><a href="$url$">Permalink &raquo;</a></p>
         $endif$
     </div>
-    <hr>
 </div>
 $endfor$
