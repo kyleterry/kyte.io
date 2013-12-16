@@ -1,0 +1,15 @@
+---
+title: Initialize
+date: 2013-12-16
+---
+
+I suppose this is my first post. We are booting up here and it might be fun.
+
+Here you will find some ramblings and thought. Mostly about nothing anyone cares
+about.
+
+[This site](https://github.com/kyleterry/kyte.io) is built in [Hakyll](https://github.com/jaspervdj/hakyll).
+Hakyll is a static site generator written in Haskell that is similar to Jekyll.
+You can fork the source from Github if you wish.
+
+Please stay tuned.
