@@ -11,4 +11,4 @@ don't give a fuck. I'm caringly apathetic and I'm optimistic about my growing
 nihilism. The older I get the more I think I care-less, but we all know it's
 bullshit.
 
-Oh, and fuck the NSA.
+You can find me on [Github](https://github.com/kyleterry).

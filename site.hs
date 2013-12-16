@@ -37,6 +37,13 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/page.html" pageCtx
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
 
+    match "wiki/*" $ do
+        let wikiContext = modificationTimeField "modified" "%B %e, %Y %l:%M %p" `mappend` defaultContext
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" wikiContext
+            >>= relativizeUrls
+
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
