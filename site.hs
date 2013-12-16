@@ -41,6 +41,7 @@ main = hakyll $ do
         let wikiContext = modificationTimeField "modified" "%B %e, %Y %l:%M %p" `mappend` defaultContext
         route $ setExtension "html"
         compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/wiki-page.html" wikiContext
             >>= loadAndApplyTemplate "templates/default.html" wikiContext
             >>= relativizeUrls
 
