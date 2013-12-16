@@ -9,6 +9,8 @@ import           Control.Applicative
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "templates/*" $ compile templateCompiler
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -34,15 +36,13 @@ main = hakyll $ do
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/page.html" pageCtx
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= loadAndApplyTemplate "template/default.html" postCtx
-            >>= relativizeUrls
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
 
     create ["archive.html"] $ do
         route idRoute
@@ -56,19 +56,18 @@ main = hakyll $ do
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
         compile $ do
             posts <- latestPosts
-            let indexContext = listField "posts" (postTeaserContext "content") (return posts) `mappend` defaultContext
+            let indexContext =
+                    listField "posts" (postTeaserContext "content") (return posts) `mappend`
+                    constField "title" "Home"                                      `mappend`
+                    defaultContext
             getResourceBody
                 >>= applyAsTemplate indexContext
-                >>= relativizeUrls
-
-    match "templates/*" $ compile templateCompiler
-
+                >>= loadAndApplyTemplate "templates/default.html" indexContext
 
 --------------------------------------------------------------------------------
 
