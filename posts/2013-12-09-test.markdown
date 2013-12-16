@@ -1,7 +1,6 @@
 ---
 title: Initialize
 bg_image: /images/9577857867_78b48fcdc1_k.jpg
-description: This is a test post
 ---
 
 I suppose this is my first post. We are booting up here.

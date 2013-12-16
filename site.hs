@@ -41,9 +41,6 @@ main = hakyll $ do
         compile $ pandocCompiler
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= loadAndApplyTemplate
-                        "templates/post-item-teaser.html"
-                        (teaserField "teaser" "content" `mappend` defaultContext)
             >>= loadAndApplyTemplate "template/default.html" postCtx
             >>= relativizeUrls
 
@@ -61,19 +58,13 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-
     match "index.html" $ do
         route idRoute
         compile $ do
-            teasers <- recentFirst =<< loadAllSnapshots "posts/*" "teaser"
-            let indexCtx =
-                    listField "posts" postCtx (return teasers) `mappend`
-                    constField "title" "Home"                  `mappend`
-                    defaultContext
-
+            posts <- latestPosts
+            let indexContext = listField "posts" (postTeaserContext "content") (return posts) `mappend` defaultContext
             getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= applyAsTemplate indexContext
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
@@ -81,10 +72,16 @@ main = hakyll $ do
 
 --------------------------------------------------------------------------------
 
+latestPosts :: Compiler [Item String]
+latestPosts = recentFirst =<< loadAllSnapshots "posts/*" "content"
+
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+postTeaserContext :: String -> Context String
+postTeaserContext snapshot = teaserField "teaser" snapshot `mappend` postCtx
 
 pageCtx :: Context String
 pageCtx = 
