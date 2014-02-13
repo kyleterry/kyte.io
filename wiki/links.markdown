@@ -21,3 +21,4 @@ Here are some links I've collected over the years:
 * <http://riemann.io/howto.html>
 * <http://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip>
 * <http://www.symbolhound.com/>
+* <https://www.youtube.com/results?search_query=star%20sizes>
