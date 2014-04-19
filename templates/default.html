@@ -24,27 +24,37 @@
   <body>
     <!-- Nav and Banner -->
   <div id="blog-header">
-    <nav class="top-bar see-through">
-        <ul class="title-area">
-            <li class="name">
-                <h1>
-                    <a href="/">Kyte.io</a>
-                </h1>
-            </li>
-        </ul>
-        <section class="top-bar-section">
-        <ul class="right">
-            <li class="divider"></li>
-            <li><a href="/archive.html" class="">Archive</a></li>
-            <li class="divider"></li>
-            <li><a href="/about.html" class="">About</a></li>
-            <li class="divider"></li>
-            <li><a href="/wiki" class="">"Wiki"</a></li>
-            <li class="divider"></li>
-            <li><a href="/projects.html" class="">Projects</a></li>
-        </ul>
-        </section>
-    </nav>
+    <div id="blog-header-inner">
+        <nav class="top-bar see-through">
+            <ul class="title-area">
+                <li class="name">
+                    <h1>
+                        <a href="/">Kyte.io</a>
+                    </h1>
+                </li>
+            </ul>
+            <section class="top-bar-section">
+            <ul class="right">
+                <li class="divider"></li>
+                <li><a href="/archive.html" class="">Archive</a></li>
+                <li class="divider"></li>
+                <li><a href="/about.html" class="">About</a></li>
+                <li class="divider"></li>
+                <li><a href="/wiki" class="">"Wiki"</a></li>
+                <li class="divider"></li>
+                <li><a href="/projects.html" class="">Projects</a></li>
+            </ul>
+            </section>
+        </nav>
+        <div id="header-content-wrapper">
+            <div id="header-content-background"></div>
+            <div id="header-content-inner">
+                $if(title)$
+                    <h2>$title$ <small>$date$$if(author)$ &diams; $author$$endif$</small></h2>
+                $endif$
+            </div>
+        </div>
+    </div>
   </div>
   <!-- End Nav and Banner -->
   <!-- Main Content Section -->

@@ -24,3 +24,37 @@
 body {
     background: #F4F4F4;
 }
+
+#blog-header-inner {
+    background-image: url("/images/dot.png");
+    background-attachment:fixed;
+    height: 100%;
+    width: 100%;
+}
+
+#header-content-wrapper {
+    position: relative;
+    max-width: 62.5rem;
+    width: 100%;
+    margin: 0px auto;
+}
+
+#header-content-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+#header-content-inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1;
+}
