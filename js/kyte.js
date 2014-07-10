@@ -1,3 +1,4 @@
+//TODO: seems to be slow. figure it out. I hate jquery
 $(document).ready(function(){
     $('#blog-header').parallax('50%', 0.2);
     var distance = $(".post-header").offset().top;
