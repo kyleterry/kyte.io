@@ -1,6 +1,7 @@
 ---
 title: Deploying Magento with Bash
 date: 2014-09-18
+bg_image: /images/9577857867_78b48fcdc1_k.jpg
 ---
 
 There are so many ways to deploy code. It's actually pretty obnoxious how many
@@ -40,7 +41,9 @@ Usage: deploy_magento.sh -e ENVIRONMENT -t TAG
             Tag or git hash to deploy
 ```
 
+
 First we will except some options from the command line:
+
 
 ```bash
 #!/usr/bin/env bash
